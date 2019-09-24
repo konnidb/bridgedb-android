@@ -3,23 +3,25 @@ package com.example.bridgedb_connector;
 import bridgedb.QueryServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import lombok.Getter;
+import lombok.Setter;
 
-public class BridgeDB {
+@Getter
+@Setter
+public class BridgeDbConnection {
     private String hostname;
     private String username;
     private String password;
     private Integer port;
     private boolean isUnsafe = true;
-    private String token;
-    private QueryServiceGrpc.QueryServiceStub stub;
     private ManagedChannel channel;
     private boolean isBlocking = true;
 
-    BridgeDB(String hostname,
-             String username,
-             String password,
-             Integer port,
-             boolean isUnsafe
+    BridgeDbConnection(String hostname,
+                       String username,
+                       String password,
+                       Integer port,
+                       boolean isUnsafe
     ) {
         this.isUnsafe = isUnsafe;
         this.username = username;
@@ -27,7 +29,7 @@ public class BridgeDB {
         this.password = password;
         this.port = port;
     }
-    BridgeDB(
+    BridgeDbConnection(
             String hostname,
             String username,
             String password,
@@ -39,27 +41,12 @@ public class BridgeDB {
         this.port = port;
     }
 
-    public BridgeDB createStub() {
-        return this;
-    }
-
-    public BridgeDB withAsyncStub() {
-        isBlocking = false;
-        this.stub = QueryServiceGrpc.newStub(channel);
-        return this;
-    }
-
-    public BridgeDB withBlockingStub() {
-        isBlocking = true;
-        return this;
-    }
-
-    public BridgeDB connect() {
+    public BridgeDbConnection connect() {
         createChannel();
         return this;
     }
 
-    private BridgeDB createChannel() {
+    private BridgeDbConnection createChannel() {
         if (isUnsafe) {
             channel = ManagedChannelBuilder.forAddress(hostname, port).usePlaintext().build();
         } else {

@@ -57,6 +57,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly "org.projectlombok:lombok:1.18.10"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.1.0'
@@ -67,4 +68,5 @@ dependencies {
     implementation "io.grpc:grpc-protobuf-lite:${grpcVersion}"
     implementation "io.grpc:grpc-stub:${grpcVersion}"
     implementation 'javax.annotation:javax.annotation-api:1.2'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
 }
