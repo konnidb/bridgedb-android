@@ -12,6 +12,7 @@ public class BridgeDbConnection {
     private String hostname;
     private String username;
     private String password;
+    private String token;
     private Integer port;
     private boolean isUnsafe = true;
     private ManagedChannel channel;
