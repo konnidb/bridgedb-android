@@ -1,8 +1,17 @@
 package com.example.bridgedb_connector.result
 
+import bridgedb.CreateNodeReq
+import bridgedb.CreateNodeResponse
+import com.example.bridgedb_connector.BridgeDbBlocking
+
 class CreateNodeResult (
-    var id: String,
-    var fields: HashMap<String, String>
+    var bridgeDbBlocking: BridgeDbBlocking,
+    var createNodeReq: CreateNodeReq
 ){
+    lateinit var createNodeResponse: CreateNodeResponse
+
+    public fun execute() {
+        createNodeResponse = bridgeDbBlocking.stub.createNode(createNodeReq)
+    }
 
 }
