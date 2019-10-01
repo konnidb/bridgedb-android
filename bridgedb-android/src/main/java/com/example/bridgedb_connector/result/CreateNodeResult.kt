@@ -9,8 +9,8 @@ class CreateNodeResult (
     var createNodeReq: CreateNodeReq
 ){
     lateinit var createNodeResponse: CreateNodeResponse
-
-    public fun execute() {
+    
+    fun execute() {
         createNodeResponse = bridgeDbBlocking.stub.createNode(createNodeReq)
     }
 
