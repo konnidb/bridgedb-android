@@ -12,13 +12,15 @@ public class BridgeDbConnection {
     private String hostname;
     private String username;
     private String password;
+    private String database;
+    private String graph;
     private String token;
     private Integer port;
     private boolean isUnsafe = true;
     private ManagedChannel channel;
     private boolean isBlocking = true;
 
-    BridgeDbConnection(String hostname,
+    public BridgeDbConnection(String hostname,
                        String username,
                        String password,
                        Integer port,
@@ -30,7 +32,7 @@ public class BridgeDbConnection {
         this.password = password;
         this.port = port;
     }
-    BridgeDbConnection(
+    public BridgeDbConnection(
             String hostname,
             String username,
             String password,
