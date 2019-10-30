@@ -18,6 +18,5 @@ class Demo : AppCompatActivity() {
         db = BridgeDbBlocking(connection)
         db.initStub()
 
-
     }
 }
