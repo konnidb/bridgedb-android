@@ -15,7 +15,8 @@ public class BridgeDbBlocking {
     }
 
     private void createStub() {
-        this.stub = QueryServiceGrpc.newBlockingStub(connection.getChannel());
+
+        this.stub = QueryServiceGrpc.newBlockingStub(connection);
     }
 
 }

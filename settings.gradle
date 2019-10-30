@@ -1,2 +1,2 @@
-include ':bridgedb-android'
+include ':bridgedb-android', ':bridgedbdemo'
 rootProject.name='bridgedb-android'
