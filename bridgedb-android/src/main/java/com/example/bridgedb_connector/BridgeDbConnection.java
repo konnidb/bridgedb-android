@@ -12,6 +12,7 @@ public class BridgeDbConnection {
     private String hostname;
     private String username;
     private String password;
+    private String token;
     private Integer port;
     private boolean isUnsafe = true;
     private ManagedChannel channel;
@@ -44,6 +45,14 @@ public class BridgeDbConnection {
     public BridgeDbConnection connect() {
         createChannel();
         return this;
+    }
+
+    public ManagedChannel getChannel() {
+        return channel;
+    }
+
+    public String getToken() {
+        return token;
     }
 
     private BridgeDbConnection createChannel() {
